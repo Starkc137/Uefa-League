@@ -1,0 +1,220 @@
+{
+    "teams": [
+        {
+            "cover": "/teams/Liverpool.png", 
+            "title": "Liverpool",
+            "country": "England",
+            "ranking": 1
+        },
+        {
+            "cover": "/teams/Barcelona.png", 
+            "title": "Barcelona",
+            "country": "Spain",
+            "ranking": 2
+        },
+        {
+            "cover": "/teams/Arsenal.png", 
+            "title": "Arsenal",
+            "country": "England",
+            "ranking": 3
+        },
+        {
+            "cover": "/teams/InterMilan.png", 
+            "title": "Inter Milan",
+            "country": "Italy",
+            "ranking": 4
+        },
+        {
+            "cover": "/teams/AtleticoMadrid.png", 
+            "title": "Atlético Madrid",
+            "country": "Spain",
+            "ranking": 5
+        },
+        {
+            "cover": "/teams/BayerLeverkusen.png", 
+            "title": "Bayer Leverkusen",
+            "country": "Germany",
+            "ranking": 6
+        },
+        {
+            "cover": "/teams/Lille.png", 
+            "title": "Lille",
+            "country": "France",
+            "ranking": 7
+        },
+        {
+            "cover": "/teams/AstonVilla.png", 
+            "title": "Aston Villa",
+            "country": "England",
+            "ranking": 8
+        },
+        {
+            "cover": "/teams/Atalanta.png", 
+            "title": "Atalanta",
+            "country": "Italy",
+            "ranking": 9
+        },
+        {
+            "cover": "/teams/BorussiaDortmund.png", 
+            "title": "Borussia Dortmund",
+            "country": "Germany",
+            "ranking": 10
+        },
+        {
+            "cover": "/teams/RealMadrid.png", 
+            "title": "Real Madrid",
+            "country": "Spain",
+            "ranking": 11
+        },
+        {
+            "cover": "/teams/BayernMunich.png", 
+            "title": "Bayern Munich",
+            "country": "Germany",
+            "ranking": 12
+        },
+        {
+            "cover": "/teams/Milan.png", 
+            "title": "Milan",
+            "country": "Italy",
+            "ranking": 13
+        },
+        {
+            "cover": "/teams/PSVEindhoven.png", 
+            "title": "PSV Eindhoven",
+            "country": "Netherlands",
+            "ranking": 14
+        },
+        {
+            "cover": "/teams/PSG.png", 
+            "title": "Paris Saint-Germain",
+            "country": "France",
+            "ranking": 15
+        },
+        {
+            "cover": "/teams/Benfica.png", 
+            "title": "Benfica",
+            "country": "Portugal",
+            "ranking": 16
+        },
+        {
+            "cover": "/teams/Monaco.png", 
+            "title": "Monaco",
+            "country": "France",
+            "ranking": 17
+        },
+        {
+            "cover": "/teams/Brest.png", 
+            "title": "Brest",
+            "country": "France",
+            "ranking": 18
+        },
+        {
+            "cover": "/teams/Feyenoord.png", 
+            "title": "Feyenoord",
+            "country": "Netherlands",
+            "ranking": 19
+        },
+        {
+            "cover": "/teams/Juventus.png", 
+            "title": "Juventus",
+            "country": "Italy",
+            "ranking": 20
+        },
+        {
+            "cover": "/teams/Celtic.png", 
+            "title": "Celtic",
+            "country": "Scotland",
+            "ranking": 21
+        },
+        {
+            "cover": "/teams/ManchesterCity.png", 
+            "title": "Manchester City",
+            "country": "England",
+            "ranking": 22
+        },
+        {
+            "cover": "/teams/SportingCP.png", 
+            "title": "Sporting CP",
+            "country": "Portugal",
+            "ranking": 23
+        },
+        {
+            "cover": "/teams/ClubBrugge.png", 
+            "title": "Club Brugge",
+            "country": "Belgium",
+            "ranking": 24
+        },
+        {
+            "cover": "/teams/DinamoZagreb.png", 
+            "title": "Dinamo Zagreb",
+            "country": "Croatia",
+            "ranking": 25
+        },
+        {
+            "cover": "/teams/VfBStuttgart.png", 
+            "title": "VfB Stuttgart",
+            "country": "Germany",
+            "ranking": 26
+        },
+        {
+            "cover": "/teams/ShaktarDonetsk.png", 
+            "title": "Shakhtar Donetsk",
+            "country": "Ukraine",
+            "ranking": 27
+        },
+        {
+            "cover": "/teams/Bologna.png", 
+            "title": "Bologna",
+            "country": "Italy",
+            "ranking": 28
+        },
+        {
+            "cover": "/teams/RedStarBelgrade.png", 
+            "title": "Red Star Belgrade",
+            "country": "Serbia",
+            "ranking": 29
+        },
+        {
+            "cover": "/teams/SturmGraz.png", 
+            "title": "Sturm Graz",
+            "country": "Austria",
+            "ranking": 30
+        },
+        {
+            "cover": "/teams/SpartaPrague.png", 
+            "title": "Sparta Prague",
+            "country": "Czech Republic",
+            "ranking": 31
+        },
+        {
+            "cover": "/teams/RBLeipzig.png", 
+            "title": "RB Leipzig",
+            "country": "Germany",
+            "ranking": 32
+        },
+        {
+            "cover": "/teams/Girona.png", 
+            "title": "Girona",
+            "country": "Spain",
+            "ranking": 33
+        },
+        {
+            "cover": "/teams/RedBullSalzburg.png", 
+            "title": "Red Bull Salzburg",
+            "country": "Austria",
+            "ranking": 34
+        },
+        {
+            "cover": "/teams/SlovanBratislava.png", 
+            "title": "Slovan Bratislava",
+            "country": "Slovakia",
+            "ranking": 35
+        },
+        {
+            "cover": "/teams/YoungBoys.png", 
+            "title": "Young Boys",
+            "country": "Switzerland",
+            "ranking": 36
+        }
+    ]
+}
