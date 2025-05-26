@@ -2,23 +2,23 @@
     "positions": [
         {
             "cover": "/positions/Goalie.png", 
-            "title": "Goalie", 
-            "search": "GK"
+            "title": "Goalies", 
+            "search": "Goalkeeper"
         }, 
         {
             "cover": "/positions/Defender.png", 
-            "title": "Defender", 
-            "search": "DF"
+            "title": "Defenders", 
+            "search": "Defender"
         },
         {
             "cover": "/positions/Midfielder.png", 
-            "title": "Midfielder", 
-            "search": "MF"
+            "title": "Midfielders", 
+            "search": "Midfielder"
         },
         {
             "cover": "/positions/Forward.png", 
             "title": "Forwards", 
-            "search": "FW"
+            "search": "Forward"
         }
     ]
 }
