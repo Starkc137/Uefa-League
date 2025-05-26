@@ -47,7 +47,7 @@ const Nations = () => {
                 />
                 <div className="content">
                   <p className="title">{country.name}</p>
-                  <Link className="btn" to={`localhost:8080/api/v1/player?nation=${encodeURIComponent(country.search)}`}>
+                  <Link className="btn" to={`/nation/${encodeURIComponent(country.search)}`}>
                     View
                   </Link>
                 </div>

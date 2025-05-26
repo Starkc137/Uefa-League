@@ -39,7 +39,7 @@ const Teams = () => {
                 <img src={team.cover} alt="teams" className="teams-image" />
                 <div className="content">
                   <p className="title">{team.title}</p>
-                  <Link className="btn" to={`/api/v1/player?team=${encodeURIComponent(team.title)}`}>
+                  <Link className="btn" to={`/team/${encodeURIComponent(team.title)}`}>
                     View
                   </Link>
                 </div>
