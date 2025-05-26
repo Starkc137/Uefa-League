@@ -4,6 +4,7 @@
     align-items: center;
     width: 50%;
     margin-left: 80px;
+    margin-bottom: 1%;
   }
   
   input[type="text"] {
@@ -40,3 +41,53 @@
         margin-left: 0;
       }
   }
+.players-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+
+.the-players-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.the-player-card {
+  background: #ffffff;
+  padding: 1.5rem;
+  color: #0B1F3A;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #000000;
+    font-weight: 900;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+
+    strong {
+      color: #000;
+    }
+  }
+}
+
+.container.search-page p, .container.position-page p, .container.teams-page p, .container.nation-page p{
+  color: #0B1F3A;
+  font-size: 1.2rem;
+}

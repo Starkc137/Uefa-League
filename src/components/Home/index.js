@@ -32,8 +32,7 @@ const Home = () => {
                 <br /> 
                 <AnimatedLetters letterClass={letterClass} strArray={jobArray} idx={15} /> 
                 </h1>
-                <h2>Your home for everything Uefa League related!</h2>
-                <Link to="/teams" className="flat-button">GET STARTED</Link>
+                <Link to="/position" className="flat-button">GET STARTED</Link>
             </div>
             <div className="image-zone">
                 <img src={HeroImage} alt="Premier League Hero" />
