@@ -22,7 +22,7 @@ const Search = () => {
     };
 
     const handleGoButtonClick = () => {
-        window.location.href = `/api/v1/player?name=${encodeURIComponent(searchQuery)}`;
+        window.location.href = `/search/${encodeURIComponent(searchQuery)}`;
     };
 
     return (
