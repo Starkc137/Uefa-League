@@ -8,8 +8,8 @@ import './index.scss';
 
 const Home = () => {
     const [letterClass, setLetterClass] = useState('text-animate')
-    const nameArray = "  Welcome to".split("");
-    const jobArray = "Uefa League !".split("");
+    const nameArray = "   Welcome to".split("");
+    const jobArray = "UEFA League !".split("");
 
     useEffect(() => {
         const timerId = setTimeout(() => {

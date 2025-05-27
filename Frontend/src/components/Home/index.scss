@@ -60,8 +60,19 @@
             opacity: 0; 
             height: auto; 
             margin-left: -1%;
-            animation: rotateIn 1s linear both; 
+            animation: zoomIn 2s ease-out forwards; 
             animation-delay: 1.4s; 
+        }
+
+        @keyframes zoomIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
     }
 
