@@ -1,8 +1,15 @@
 # UEFA League
 
-UEFA League is an all-in-one platform designed to gather, manage, and display football player statistics across major European leagues. It sets the foundation for future features like match prediction, player comparison, and fantasy squad selection. The project is structured into four key components: **Backend**, **Frontend**, **Data Scraping**, and **Machine Learning** (upcoming).
+UEFA League is an all-in-one platform designed to gather, manage, and display football player statistics across major European leagues. It sets the foundation for future features like match prediction, player comparison, and fantasy squad selection. The project is structured into four key components: **Backend**, **Frontend**, **Data Scraping**.
 
-🌐 [Check out the live site!](https://uefa-league.vercel.app/)  
+
+https://github.com/user-attachments/assets/032ff3f0-22e6-4ba4-8b9b-3c86fc5631da
+
+---
+
+
+🌐 [Check out the live site here!](https://uefa-league.vercel.app/)  
+
 
 ---
 
