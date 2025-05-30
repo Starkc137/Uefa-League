@@ -11,6 +11,7 @@ import NationDetails from "./components/Nation/TeamDetails";
 import Position from "./components/Position";
 import PositionDetails from "./components/Position/TeamDetails";
 import Search from "./components/Search";
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
           <Route path="search" element={<Search />} />
         </Route>
       </Routes>
+      <Analytics/>
     </>
   );
 }
