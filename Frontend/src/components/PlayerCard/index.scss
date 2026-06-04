@@ -1,0 +1,136 @@
+.player-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(11, 31, 58, 0.10);
+  overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(11, 31, 58, 0.18);
+  }
+
+  &__img-wrap {
+    position: relative;
+    height: 180px;
+    background: linear-gradient(135deg, #0B1F3A 0%, #184E77 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  &__img-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__position {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  &__name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0B1F3A;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__team-logo {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+  }
+
+  &__team {
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: 500;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    background: #f5f7fa;
+    border-radius: 10px;
+    padding: 10px 6px;
+    margin-top: 4px;
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+
+      &__val {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #0B1F3A;
+        line-height: 1;
+      }
+
+      &__lbl {
+        font-size: 0.95rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+    }
+  }
+
+  &__cards {
+    display: flex;
+    gap: 12px;
+    font-size: 1.2rem;
+    color: #555;
+  }
+
+  &__season {
+    font-size: 1rem;
+    color: #aaa;
+    font-weight: 500;
+    margin-top: auto;
+    text-align: right;
+  }
+}

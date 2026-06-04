@@ -1,34 +1,65 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import playerData from "../../../data/uefa_stats.json";
-import "./index.scss";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import PlayerCard from '../../PlayerCard';
+import SeasonSelector from '../../SeasonSelector';
+import { fetchPlayers } from '../../../api';
+import './index.scss';
 
-const TeamDetails = () => {
-  const { position } = useParams();
+const POSITION_LABELS = {
+  goalkeeper: 'Goalkeepers',
+  defender:   'Defenders',
+  midfielder: 'Midfielders',
+  forward:    'Forwards',
+};
 
-  const players = playerData.filter(
-    (player) => player.position.toLowerCase() === position.toLowerCase()
-  );
+const PositionDetails = () => {
+  const { position }                    = useParams();
+  const [players, setPlayers]           = useState([]);
+  const [loading, setLoading]           = useState(true);
+  const [error, setError]               = useState(null);
+  const [season, setSeason]             = useState('2024-25');
+  const [sortBy, setSortBy]             = useState('goals');
+
+  const label = POSITION_LABELS[position?.toLowerCase()] ?? position;
+
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+    fetchPlayers({ position: decodeURIComponent(position), season: season || undefined })
+      .then(res => { setPlayers(res.data); setLoading(false); })
+      .catch(err => { setError(err.message); setLoading(false); });
+  }, [position, season]);
+
+  const sorted = [...players].sort((a, b) => (b[sortBy] ?? 0) - (a[sortBy] ?? 0));
 
   return (
     <div className="team-details-container">
-      <h1>{position}s</h1>
-      {players.length === 0 ? (
-        <p>No players found for this team.</p>
-      ) : (
+      <h1>{label}</h1>
+
+      <div className="position-controls">
+        <SeasonSelector value={season} onChange={setSeason} />
+        <div className="sort-selector">
+          <label htmlFor="sort-select">Sort by</label>
+          <select id="sort-select" value={sortBy} onChange={e => setSortBy(e.target.value)}>
+            <option value="goals">Goals</option>
+            <option value="assists">Assists</option>
+            <option value="matchesPlayed">Appearances</option>
+            <option value="minutesPlayed">Minutes</option>
+            <option value="yellowCards">Yellow cards</option>
+          </select>
+        </div>
+      </div>
+
+      {loading && <p className="status-msg">Loading players…</p>}
+      {error   && <p className="status-msg error">Error: {error}</p>}
+      {!loading && !error && players.length === 0 && (
+        <p className="status-msg">No {label?.toLowerCase()} found in {season || 'any season'}.</p>
+      )}
+
+      {!loading && sorted.length > 0 && (
         <div className="players-list">
-          {players.map((player, idx) => (
-            <div key={idx} className="player-card">
-              <h3>{player.name}</h3>
-              <p><strong>Nation:</strong> {player.nation}</p>
-              <p><strong>Position:</strong> {player.position}</p>
-              <p><strong>Age:</strong> {player.age}</p>
-              <p><strong>Matches Played:</strong> {player.matches_played}</p>
-              <p><strong>Goals:</strong> {player.goals}</p>
-              <p><strong>Assists:</strong> {player.assists}</p>
-              <p><strong>Yellow Cards:</strong> {player.yellow_cards}</p>
-              <p><strong>Red Cards:</strong> {player.red_cards}</p>
-            </div>
+          {sorted.map((player, idx) => (
+            <PlayerCard key={`${player.name}-${idx}`} player={player} />
           ))}
         </div>
       )}
@@ -36,4 +67,4 @@ const TeamDetails = () => {
   );
 };
 
-export default TeamDetails;
+export default PositionDetails;

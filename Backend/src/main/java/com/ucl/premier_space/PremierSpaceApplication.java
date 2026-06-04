@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class PremierSpaceApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(PremierSpaceApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(PremierSpaceApplication.class, args);
+    }
 }

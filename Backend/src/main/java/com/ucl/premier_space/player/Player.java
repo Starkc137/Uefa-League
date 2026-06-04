@@ -1,159 +1,140 @@
 package com.ucl.premier_space.player;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name="player_stats")
+@Table(
+    name = "player_stats",
+    uniqueConstraints = @UniqueConstraint(columnNames = {"name", "team_name", "season"})
+)
 public class Player {
 
     @Id
-    @Column(name = "name")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column (name = "nation")
+    @Column(name = "nation")
     private String nation;
 
-    @Column (name = "position")
+    @Column(name = "position")
     private String position;
 
-    @Column (name = "age")
+    @Column(name = "detailed_position")
+    private String detailedPosition;
+
+    @Column(name = "age")
     private Integer age;
 
-    private Double matches_played;
+    @Column(name = "matches_played")
+    private Integer matchesPlayed;
 
-    private Double minutes_played;
+    @Column(name = "minutes_played")
+    private Integer minutesPlayed;
 
-    private Double goals;
+    @Column(name = "goals")
+    private Integer goals;
 
-    private Double assists;
+    @Column(name = "assists")
+    private Integer assists;
 
-    private Double penalties_scored;
+    @Column(name = "penalties_scored")
+    private Integer penaltiesScored;
 
-    private Double yellow_cards;
+    @Column(name = "yellow_cards")
+    private Integer yellowCards;
 
-    private Double red_cards;
+    @Column(name = "red_cards")
+    private Integer redCards;
 
-    private String team_name;
+    @Column(name = "team_name")
+    private String teamName;
 
-    public Player(String name, String nation, String position, Integer age, Double matches_played, Double minutes_played, Double goals, Double assists, Double penalties_scored, Double yellow_cards, Double red_cards, String team_name) {
+    @Column(name = "team_logo_url")
+    private String teamLogoUrl;
+
+    @Column(name = "player_image_url")
+    private String playerImageUrl;
+
+    @Column(name = "season", nullable = false)
+    private String season;
+
+    public Player() {}
+
+    public Player(String name, String nation, String position, String detailedPosition,
+                  Integer age, Integer matchesPlayed, Integer minutesPlayed,
+                  Integer goals, Integer assists, Integer penaltiesScored,
+                  Integer yellowCards, Integer redCards,
+                  String teamName, String teamLogoUrl, String playerImageUrl, String season) {
         this.name = name;
         this.nation = nation;
         this.position = position;
+        this.detailedPosition = detailedPosition;
         this.age = age;
-        this.matches_played = matches_played;
-        this.minutes_played = minutes_played;
+        this.matchesPlayed = matchesPlayed;
+        this.minutesPlayed = minutesPlayed;
         this.goals = goals;
         this.assists = assists;
-        this.penalties_scored = penalties_scored;
-        this.yellow_cards = yellow_cards;
-        this.red_cards = red_cards;
-        this.team_name = team_name;
+        this.penaltiesScored = penaltiesScored;
+        this.yellowCards = yellowCards;
+        this.redCards = redCards;
+        this.teamName = teamName;
+        this.teamLogoUrl = teamLogoUrl;
+        this.playerImageUrl = playerImageUrl;
+        this.season = season;
     }
 
-    public Player(String name) {
-        this.name = name;
-    }
+    // Getters and setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Player() {
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    }
+    public String getNation() { return nation; }
+    public void setNation(String nation) { this.nation = nation; }
 
-    public String getName() {
-        return name;
-    }
+    public String getPosition() { return position; }
+    public void setPosition(String position) { this.position = position; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getDetailedPosition() { return detailedPosition; }
+    public void setDetailedPosition(String detailedPosition) { this.detailedPosition = detailedPosition; }
 
-    public String getNation() {
-        return nation;
-    }
+    public Integer getAge() { return age; }
+    public void setAge(Integer age) { this.age = age; }
 
-    public void setNation(String nation) {
-        this.nation = nation;
-    }
+    public Integer getMatchesPlayed() { return matchesPlayed; }
+    public void setMatchesPlayed(Integer matchesPlayed) { this.matchesPlayed = matchesPlayed; }
 
-    public String getPosition() {
-        return position;
-    }
+    public Integer getMinutesPlayed() { return minutesPlayed; }
+    public void setMinutesPlayed(Integer minutesPlayed) { this.minutesPlayed = minutesPlayed; }
 
-    public void setPosition(String pos) {
-        this.position = pos;
-    }
+    public Integer getGoals() { return goals; }
+    public void setGoals(Integer goals) { this.goals = goals; }
 
-    public Integer getAge() {
-        return age;
-    }
+    public Integer getAssists() { return assists; }
+    public void setAssists(Integer assists) { this.assists = assists; }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+    public Integer getPenaltiesScored() { return penaltiesScored; }
+    public void setPenaltiesScored(Integer penaltiesScored) { this.penaltiesScored = penaltiesScored; }
 
-    public Double getMatches_played() {
-        return matches_played;
-    }
+    public Integer getYellowCards() { return yellowCards; }
+    public void setYellowCards(Integer yellowCards) { this.yellowCards = yellowCards; }
 
-    public void setMatches_played(Double mp) {
-        this.matches_played = mp;
-    }
+    public Integer getRedCards() { return redCards; }
+    public void setRedCards(Integer redCards) { this.redCards = redCards; }
 
-    public Double getMinutes_played() {
-        return minutes_played;
-    }
+    public String getTeamName() { return teamName; }
+    public void setTeamName(String teamName) { this.teamName = teamName; }
 
-    public void setMinutes_played(Double min) {
-        this.minutes_played = min;
-    }
+    public String getTeamLogoUrl() { return teamLogoUrl; }
+    public void setTeamLogoUrl(String teamLogoUrl) { this.teamLogoUrl = teamLogoUrl; }
 
-    public Double getGoals() {
-        return goals;
-    }
+    public String getPlayerImageUrl() { return playerImageUrl; }
+    public void setPlayerImageUrl(String playerImageUrl) { this.playerImageUrl = playerImageUrl; }
 
-    public void setGoals(Double gls) {
-        this.goals = gls;
-    }
-
-    public Double getAssists() {
-        return assists;
-    }
-
-    public void setAssists(Double ast) {
-        this.assists = ast;
-    }
-
-    public Double getPenalties_scored() {
-        return penalties_scored;
-    }
-
-    public void setPenalties_scored(Double pk) {
-        this.penalties_scored = pk;
-    }
-
-    public Double getYellow_cards() {
-        return yellow_cards;
-    }
-
-    public void setYellow_cards(Double crdy) {
-        this.yellow_cards = crdy;
-    }
-
-    public Double getRed_cards() {
-        return red_cards;
-    }
-
-    public void setRed_cards(Double crlr) {
-        this.red_cards = crlr;
-    }
-
-    public String getTeam_name() {
-        return team_name;
-    }
-
-    public void setTeam_name(String team) {
-        this.team_name = team;
-    }
+    public String getSeason() { return season; }
+    public void setSeason(String season) { this.season = season; }
 }

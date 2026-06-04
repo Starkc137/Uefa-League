@@ -1,129 +1,99 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import "./index.scss";
-import AnimatedLetters from "../AnimatedLetters";
+import AnimatedLetters from '../AnimatedLetters';
+import SeasonSelector from '../SeasonSelector';
+import { fetchPlayers } from '../../api';
+import './index.scss';
 
 const TeamData = () => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [playerData, setPlayerData] = useState([]);
-  const [playersToShow, setPlayersToShow] = useState(10);
-  const [letterClass] = useState('text-animate');
-  
+  const [loading, setLoading]           = useState(true);
+  const [error, setError]               = useState(null);
+  const [playerData, setPlayerData]     = useState([]);
+  const [playersToShow, setPlayersToShow] = useState(20);
+  const [letterClass]                   = useState('text-animate');
+  const [season, setSeason]             = useState('2024-25');
+
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const teamValue = params.get('team');
-    const nationValue = params.get('nation');
-    const positionValue = params.get('position');
-    const nameValue = params.get('name');
-    
-    if (teamValue) {
-      axios.get(`http://localhost:8080/api/v1/player?team=${encodeURIComponent(teamValue)}`)
-        .then(response => {
-          setPlayerData(response.data);
-          setLoading(false);
-        })
-        .catch(error => {
-          setError(error);
-          setLoading(false);
-        });
-    } else if (nationValue){
-      axios.get(`http://localhost:8080/api/v1/player?nation=${encodeURIComponent(nationValue)}`)
-      .then(response => {
-        setPlayerData(response.data);
-        setLoading(false);
-      })
-      .catch(error => {
-        setError(error);
-        setLoading(false);
-      });
-    } else if (positionValue){
-      axios.get(`http://localhost:8080/api/v1/player?position=${encodeURIComponent(positionValue)}`)
-      .then(response => {
-        setPlayerData(response.data);
-        setLoading(false);
-      })
-      .catch(error => {
-        setError(error);
-        setLoading(false);
-      });
-    } else if (nameValue){
-      axios.get(`http://localhost:8080/api/v1/player?name=${encodeURIComponent(nameValue)}`)
-      .then(response => {
-        setPlayerData(response.data);
-        setLoading(false);
-      })
-      .catch(error => {
-        setError(error);
-        setLoading(false);
-      });
-    }
-      else {
-      setLoading(false);
-    }
-  }, []);
+    const params  = new URLSearchParams(window.location.search);
+    const team    = params.get('team');
+    const nation  = params.get('nation');
+    const position = params.get('position');
+    const name    = params.get('name');
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+    const query = {};
+    if (team)     query.team     = team;
+    if (nation)   query.nation   = nation;
+    if (position) query.position = position;
+    if (name)     query.name     = name;
+    if (season)   query.season   = season;
 
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
+    if (Object.keys(query).length === 0) { setLoading(false); return; }
 
+    setLoading(true);
+    fetchPlayers(query)
+      .then(res => { setPlayerData(res.data); setLoading(false); })
+      .catch(err => { setError(err.message); setLoading(false); });
+  }, [season]);
+
+  if (loading) return <p className="status-msg">Loading…</p>;
+  if (error)   return <p className="status-msg error">Error: {error}</p>;
 
   return (
-    <div className={`fade-in ${loading ? 'loading' : ''}`}>
-    <div className="table-container">
-      <h1 className = "page-title">
-        <AnimatedLetters letterClass = {letterClass} strArray={"Player Data".split("")} idx={12}/>
-      </h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Age</th>
-            <th>Matches Played</th>
-            <th>Starts</th>
-            <th>Minutes Played</th>
-            <th>Goals</th>
-            <th>Assists</th>
-            <th>Penalties Kicked</th>
-            <th>Yellow Cards</th>
-            <th>Red Cards</th>
-            <th>Expected Goals (xG)</th>
-            <th>Expected Assists (xAG)</th>
-            <th>Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          {playerData.slice(0, playersToShow).map(player => (
-            <tr key={player.name}>
-              <td>{player.name}</td>
-              <td>{player.pos}</td>
-              <td>{player.age}</td>
-              <td>{player.mp}</td>
-              <td>{player.starts}</td>
-              <td>{player.min}</td>
-              <td>{player.gls}</td>
-              <td>{player.ast}</td>
-              <td>{player.pk}</td>
-              <td>{player.crdy}</td>
-              <td>{player.crdr}</td>
-              <td>{player.xg}</td>
-              <td>{player.xag}</td>
-              <td>{player.team}</td>
+    <div className="fade-in">
+      <div className="table-container">
+        <h1 className="page-title">
+          <AnimatedLetters letterClass={letterClass} strArray={'Player Data'.split('')} idx={12} />
+        </h1>
+
+        <SeasonSelector value={season} onChange={setSeason} />
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Age</th>
+              <th>Nation</th>
+              <th>Team</th>
+              <th>Apps</th>
+              <th>Mins</th>
+              <th>Goals</th>
+              <th>Assists</th>
+              <th>Pens</th>
+              <th>🟨</th>
+              <th>🟥</th>
+              <th>Season</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      {playersToShow < playerData.length && (
-        <button onClick={() => setPlayersToShow(playersToShow + 10)} style={{ marginTop: '10px', marginBottom: '10px' }} className={`show-more-button ${loading ? 'loading' : ''}`}>
-          Show More
-        </button>
-      )}
-    </div>
+          </thead>
+          <tbody>
+            {playerData.slice(0, playersToShow).map((player, idx) => (
+              <tr key={`${player.name}-${idx}`}>
+                <td>{player.name}</td>
+                <td>{player.position}</td>
+                <td>{player.age}</td>
+                <td>{player.nation}</td>
+                <td>{player.teamName}</td>
+                <td>{player.matchesPlayed}</td>
+                <td>{player.minutesPlayed}</td>
+                <td>{player.goals}</td>
+                <td>{player.assists}</td>
+                <td>{player.penaltiesScored}</td>
+                <td>{player.yellowCards}</td>
+                <td>{player.redCards}</td>
+                <td>{player.season}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {playersToShow < playerData.length && (
+          <button
+            className="show-more-button"
+            onClick={() => setPlayersToShow(n => n + 20)}
+          >
+            Show more
+          </button>
+        )}
+      </div>
     </div>
   );
 };

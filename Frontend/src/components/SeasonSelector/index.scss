@@ -1,17 +1,9 @@
-@import '../../Teams/TeamDetails/index.scss';
-
-.position-controls {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 8px;
-}
-
-.sort-selector {
+.season-selector {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-left: 80px;
+  margin-bottom: 20px;
 
   label {
     color: #0B1F3A;
@@ -32,6 +24,13 @@
     font-family: 'Red Hat Display', sans-serif;
     transition: border-color 0.2s ease;
 
-    &:hover, &:focus { border-color: #184E77; }
+    &:hover,
+    &:focus {
+      border-color: #184E77;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    margin-left: 0;
   }
 }
