@@ -1,16 +1,9 @@
-import axios from 'axios';
+import { createClient } from '@supabase/supabase-js';
 
-const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
-
-const api = axios.create({
-  baseURL: BASE_URL,
-  timeout: 10000,
-});
-
-/**
- * Fetch players from the backend.
- * All params are optional. season=null fetches across all seasons.
- */
+const supabase = createClient(
+  process.env.REACT_APP_SUPABASE_URL,
+  process.env.REACT_APP_SUPABASE_ANON_KEY
+);
 
 export const fetchPlayers = async ({ team, name, position, nation, season, compare } = {}) => {
   let query = supabase.from('player_stats').select('*');
@@ -24,7 +17,7 @@ export const fetchPlayers = async ({ team, name, position, nation, season, compa
 
   const { data, error } = await query.order('goals', { ascending: false });
   if (error) throw error;
-  return { data: data ?? [] };  // always an array
+  return { data: data ?? [] };
 };
 
 export const fetchSeasons = async () => {
@@ -38,4 +31,4 @@ export const fetchSeasons = async () => {
   return { data: unique };
 };
 
-export default api;
+export default supabase;
